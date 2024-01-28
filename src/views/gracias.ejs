@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: <%= session.userData ? session.userData.color : null %>
+        }
+    </style>
+    
+    <% if(session.userData) { %>
+    <h2><%= session.userData.name %>, gracias por visitarnos!</h2>
+    <% } else { %>
+    <h2>Complete los datos en el formulario, por favor</h2>
+    <% } %>
+    
+    <h4><a href="/"> Volver al formulario</a></h4>
+</body>
+</html>

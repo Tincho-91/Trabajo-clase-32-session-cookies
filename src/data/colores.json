@@ -1,0 +1,19 @@
+[
+   
+    {
+        "valor": "blue",
+        "texto": "Azul"
+    },
+    {
+        "valor": "green",
+        "texto": "Verde"
+    },
+    {
+        "valor": "yellow",
+        "texto": "Amarillo"
+    },
+    {
+        "valor": "orange",
+        "texto": "Naranja"
+    }
+]

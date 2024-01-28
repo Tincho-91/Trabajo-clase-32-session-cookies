@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <title>Session y Cookies </title>
+    </head>
+<body>
+    <h1>Formulario</h1>
+    <header>
+       
+    </header>
+    <main>
+        <body>
+            <style>
+                body {
+                    background-color: <%= session.userData ? session.userData.color : null %>
+                }
+                </style>
+                <form action="/form" method="POST">
+                <div>
+                    <div>
+                        <% if (session.userData) { %>
+                            <div>
+                                <h2>Tus datos:</h2>
+                                <h2>Hola <%= session.userData.name %>,</h2>
+                                <h2>Elegiste el color: <%= session.userData.colorTexto %></h2>
+                                <h2>Tu mail es: <%= session.userData.mail %></h2>
+                                <h2>Tu edad es: <%= session.userData.age %></h2>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div >
+                        <label for="name">Nombre </label>
+                        <input class="<%= locals.errors && errors.name ? 'is-invalid' : null%> form-control" type="text" name="name" id="name" value="<%= locals.old && locals.old.name ? locals.old.name : null %>">
+                        <small style="color: red"><%= locals.errors && errors.name ? errors.name.msg : null%></small>
+                    </div><br>
+
+                    <div >
+                        <label for="color">color </label>
+                        <select class=" form-control <%= locals.errors && errors.color ? 'is-invalid' : null%> " name="color" id="color">
+                            <option value="" selected hidden>Seleccionar </option>
+                            <% colores.forEach(color=> { %>
+                            <option value="<%= color.valor %>" <%= locals.old && color.valor == old.color ? 'selected' : null %>><%= color.texto %></option>
+                    <% }) %>
+                        </select>
+                        <small style="color: red"><%= locals.errors && errors.color ? errors.color.msg : null%></small>
+                    </div><br>
+
+                    <div>
+                        <label for="mail">Email </label>
+                        <input class="<%= locals.errors && errors.mail ? 'is-invalid' : null%> form-control" type="email" name="mail" id="mail"  value="<%= locals.old && locals.old.mail ? locals.old.mail : null %>">
+                        <small style="color: red"><%= locals.errors && errors.mail ? errors.mail.msg : null%></small>
+                    </div><br>
+
+                    <div>
+                        <label for="age">Edad </label>
+                        <input class="<%= locals.errors && errors.age ? 'is-invalid' : null%> form-control" type="text" name="age" id="age" value="<%= locals.old && locals.old.age ? locals.old.age : null %>">
+                        <small style="color: red"><%= locals.errors && errors.age ? errors.age.msg : null%></small>
+                    </div><br>
+
+                    <div>
+                        <label for="recordar">Recordar </label>
+                        <input type="checkbox" name="recordar" id="recordar">
+                    </div><br>          
+                       
+                        <button class="enviar" type="submit">Enviar</button><br><br>
+
+                        <button class="borrar" type="submit"> <a href="/borrar">Borrar</a></button>
+                </form>
+                <h2><a href="/gracias"> Bienvenido </a></h2>
+              
+        </div>
+        </body>
+    </main>
+</body>
+</html>
